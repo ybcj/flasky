@@ -34,3 +34,14 @@ class ChangePasswordForm(FlaskForm):
     password = PasswordField('New password', validators=[DataRequired(), EqualTo('password2', message='Please must math.')])
     password2 = PasswordField('Confirm new password', validators=[DataRequired()])
     submit = SubmitField('Update Password')
+
+
+class PasswordResetRequestForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Length(1, 64), Email()])
+    submit = SubmitField('Send Email')
+
+
+class PasswordResetForm(FlaskForm):
+    password = PasswordField('New Password', validators=[DataRequired(), EqualTo('password2', message='Please must match.')])
+    password2 = PasswordField('Confirm new password', validators=[DataRequired()])
+    submit = SubmitField('Reset Password')
